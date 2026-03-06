@@ -1,0 +1,75 @@
+namespace Calculator
+{
+    internal class Program
+    {
+        public float num1;
+        public float num2;
+
+        public void TakeNumbers()
+        {
+            Console.WriteLine("Hello enter 2 numbers to do a process ");
+            float.TryParse(Console.ReadLine(), out num1);
+            float.TryParse(Console.ReadLine(), out num2);
+        }
+
+        public float AddTwoNumbers(float number1, float number2)
+        {
+            return number1 + number2;
+        }
+
+        public float Divide(float number1, float number2)
+        {
+            if (number2 == 0)
+            {
+                Console.WriteLine("can not divide by zero");
+                return 0;
+            }
+            return number1 / number2;
+        }
+
+        public float Subtraction(float number1, float number2)
+        {
+            return number1 - number2;
+        }
+
+        public float Multiplication(float number1, float number2)
+        {
+            return number1 * number2;
+        }
+
+        static void Main(string[] args)
+        {
+            Program calc = new Program();
+
+            Console.WriteLine("enter two numbers");
+            calc.TakeNumbers();
+
+            Console.WriteLine("choose the operation 1 for + , 2 for - , 3 for * , 4 for /");
+            int.TryParse(Console.ReadLine(), out int choice);
+
+            switch (choice)
+            {
+                case 1:
+                    Console.WriteLine("Sum = " + calc.AddTwoNumbers(calc.num1, calc.num2));
+                    break;
+
+                case 2:
+                    Console.WriteLine("Subtraction = " + calc.Subtraction(calc.num1, calc.num2));
+                    break;
+
+                case 3:
+                    Console.WriteLine("Multiplication = " + calc.Multiplication(calc.num1, calc.num2));
+                    break;
+
+                case 4:
+                    Console.WriteLine("Division = " + calc.Divide(calc.num1, calc.num2));
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid choice");
+
+                    break;
+            }
+        }
+    }
+}
